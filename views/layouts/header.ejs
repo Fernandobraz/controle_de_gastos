@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gastos Mensais</title>
+    <meta name="viewport" content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" media='screen'>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+     <link rel='stylesheet' href='/stylesheets/main.css' />
+  </head>
+  <body>
+    <% var logged = false; %>
+    <% if(typeof(currentUser) !== "undefined"){ %>
+        <% logged = true; %>
+    <% } %>
+    <div class="container">
+        <div class="nav-bar">
+            <ul class="links">
+                <% if(logged) {%>
+                    <li><a href="/flux">Flux</a></li>       
+                    <li><a href="/users">Users</a></li> 
+                    <li><a href="/users/password_change">Change Password</a></li>      
+                    <li><a href="/users/logout">Logout</a></li>
+                <% }%>        
+            </ul>
+        </div>
+        <div class="content">

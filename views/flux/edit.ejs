@@ -1,0 +1,41 @@
+<% include ../layouts/header.ejs %>
+<div class="col-sm-6">
+    <% if(typeof(message) !== "undefined" && message.length > 0){ %>
+    <div class="alert alert-danger"><%- message %></div>
+    <% } %>
+    <h1>Edit Flux</h1>
+    <!-- LOGIN FORM -->
+    <form action="/flux/update" method="post">
+        <input type="hidden" name="id" value="<%= flux._id %>">
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date" value="<%= flux.date %>">
+        </div>
+        <div class="form-group">
+            <label>Value</label>
+            <input type="text" class="form-control" name="value" value="<%= flux.value %>">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description" value="<%= flux.description %>">
+        </div>
+        <div class="form-group">
+            <label>In/Out </label>
+            <select name="inOut" class="form-control">
+                <option value="in" <% if(flux.inOut === "in"){ %> selected <% } %>>In</option>
+                <option value="out" <% if(flux.inOut === "out"){ %> selected <% } %>>Out</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Period Type </label>
+            <select name="type" class="form-control">
+                <option value="daily" <% if(flux.type === "daily"){ %> selected <% } %>>Daily</option>
+                <option value="monthly"<% if(flux.type === "monthly"){ %> selected <% } %>>Monthly</option>
+                <option value="annually"<% if(flux.type === "annually"){ %> selected <% } %>>Annually</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg">Update</button>
+        <a href="/flux/">Cancel</a>
+    </form>
+</div>
+<% include ../layouts/footer.ejs %>

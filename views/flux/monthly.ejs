@@ -1,0 +1,33 @@
+<% include ../layouts/header.ejs %>
+
+<h1><%= month %>'s Fluxes</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Value</th>
+			<th>Description</th>
+			<th>In/Out</th>
+      <th>Created at</th>
+      <th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% fluxes.forEach(function(flux){ %>
+      <tr>
+        <td><%= moment(flux.date).format("DD/MM/YYYY") %></td>
+        <td><%= flux.value %></td>
+        <td><%= flux.description %></td>
+        <td><%= flux.inOut %></td>
+        <td><%= moment(flux.createdAt).format("DD/MM/YYYY") %></td>
+        <td><a href="/flux/edit/<%= flux._id %>">Edit</a></td>
+        <td><a href="/flux/delete/<%= flux._id %>">Delete</a></td>
+      </tr>
+    <% }); %>
+		
+	</tbody>
+</table>
+<a href="/flux">Back</a>
+<% include ../layouts/footer.ejs %>

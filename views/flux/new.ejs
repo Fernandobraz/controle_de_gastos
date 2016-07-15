@@ -1,0 +1,41 @@
+<% include ../layouts/header.ejs %>
+<div class="col-sm-6">
+    <% if(typeof(message) !== "undefined" && message.length > 0){ %>
+    <div class="alert alert-danger"><%- message %></div>
+    <% } %>
+    <h1>New Flux</h1>
+    <!-- LOGIN FORM -->
+    <form action="/flux/create" method="post">
+        <input type="hidden" name="userId" value="<%= currentUser._id %>">
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" class="form-control" name="date" value="<%= today.format('YYYY-MM-DD') %>">
+        </div>
+        <div class="form-group">
+            <label>Value</label>
+            <input type="text" class="form-control" name="value">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description">
+        </div>
+        <div class="form-group">
+            <label>In/Out </label>
+            <select name="inOut" class="form-control">
+                <option value="in">In</option>
+                <option value="out" selected>Out</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Period Type </label>
+            <select name="type" class="form-control">
+                <option value="daily" selected>Daily</option>
+                <option value="monthly">Monthly</option>
+                <option value="annually">Annually</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg">Create</button>
+        <a href="/flux/">Cancel</a>
+    </form>
+</div>
+<% include ../layouts/footer.ejs %>

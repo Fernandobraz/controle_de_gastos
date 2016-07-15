@@ -1,0 +1,28 @@
+<% include ../layouts/header.ejs %>
+
+<h1>Balance</h1>
+
+<p>Total In: <strong>£<%= totalIn %></strong></p>
+<p>Total Out: <strong>£<%= totalOut %></strong></p>
+<p>Total: <strong>£<%= parseFloat(totalIn) - parseFloat(totalOut) %></strong></p>
+
+<% for(var i = 0; i<3; i++){ %>
+<% var counter = 0; %>
+<a class="month-link" href="/flux/monthly/<%= moment().subtract(i, "months").format("MMMM").toLowerCase() %>">
+	<div class="month-block">
+	  <h3><%= moment().subtract(i, 'months').format('MMMM'); %></h3>
+	  <% fluxes.forEach(function(flux){ %>
+	  	<% if(counter >= 3){ return false } %>
+	  	<% if(moment(flux.date).month() === moment().subtract(i, "months").month()){ %>
+	  		<p><strong><%= moment(flux.date).format("DD/MM/YYYY") %></strong> - <span><%= flux.description %></span> - £<span><%= flux.value %></span></p>
+	  		<% counter++ %>
+		<% } %>
+	  <% });%>
+	</div>
+</a>
+
+<% } %>
+
+<a href="/flux"> Back</a>
+
+<% include ../layouts/footer.ejs %>

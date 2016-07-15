@@ -1,0 +1,50 @@
+<% include ../layouts/header.ejs %>
+
+<h1>Flux index page</h1>
+<a href="/flux/new">New Flux</a> | <a href="/flux/balance">Balance</a>
+
+<div class="month-filter">
+  <select id="js-month-selector">
+    <% monthList.forEach(function(m){ %>
+      <option value="<%= m %>"><%= m %></option>
+    <% }); %>
+  </select>
+  <button id="js-month-selector--btn">Search</button>
+</div>
+
+<table>
+	<thead>
+		<tr>
+      <th>Description</th>
+      <th>Value</th>
+			<th>Date</th>
+      <th>In/Out</th>
+			<th>Period Type</th>
+      <th>Created at</th>
+      <th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% fluxes.forEach(function(flux){ %>
+      <tr>
+        <td><%= flux.description %></td>
+        <td><%= flux.value %></td>
+        <td><%= moment(flux.date).format("DD/MM/YYYY") %></td>
+        <td><%= flux.inOut %></td>
+        <td><%= flux.type %></td>
+        <td><%= moment(flux.createdAt).format("DD/MM/YYYY") %></td>
+        <td><a href="/flux/edit/<%= flux._id %>">Edit</a></td>
+        <td><a href="/flux/delete/<%= flux._id %>">Delete</a></td>
+      </tr>
+    <% }); %>
+		
+	</tbody>
+</table>
+
+<script type="text/javascript">
+  $("#js-month-selector--btn").click(function(){
+    window.location.href = "/flux/monthly/" + $("#js-month-selector").val();
+  });
+</script>
+<% include ../layouts/footer.ejs %>
