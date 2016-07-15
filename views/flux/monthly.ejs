@@ -1,6 +1,10 @@
 <% include ../layouts/header.ejs %>
 
 <h1><%= month %>'s Fluxes</h1>
+<div class="month-nav">
+  <a href="/flux/monthly/<%= moment().month(monthNum).subtract(1, "months").format("MMMM").toLowerCase() %>">< Prev Month</a> | 
+  <a href="/flux/monthly/<%= moment().month(monthNum).add(1, "months").format("MMMM").toLowerCase() %>">Next Month ></a>
+</div>
 
 <table>
 	<thead>

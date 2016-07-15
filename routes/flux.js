@@ -107,7 +107,24 @@ router.get('/delete/:id', authorisations.isLoggedIn, function(req, res){
 
 router.get("/monthly/:month", authorisations.isLoggedIn, function(req, res){
   var month = req.params.month;
+  var monthNum;
   var relevantData = [];
+
+  var monthList = [
+    {name: "january", index: "0"},
+    {name: "february", index: "1"},
+    {name: "march", index: "2"},
+    {name: "april", index: "3"},
+    {name: "may", index: "4"},
+    {name: "june", index: "5"},
+    {name: "july", index: "6"},
+    {name: "august", index: "7"},
+    {name: "september", index: "8"},
+    {name: "october", index: "9"},
+    {name: "november", index: "10"},
+    {name: "december", index: "11"}
+  ];
+
   Flux.find({"userId": req.user._id}, function(err, fluxes){
     if(err){
       res.status(err.status || 500);
@@ -120,7 +137,13 @@ router.get("/monthly/:month", authorisations.isLoggedIn, function(req, res){
       }
     });
 
-    res.render('flux/monthly.ejs', { currentUser: req.user, fluxes: relevantData, month: month, moment: moment});
+    monthList.forEach(function(m){
+      if(m.name === month){
+        monthNum = m.index;
+      }
+    });
+
+    res.render('flux/monthly.ejs', { currentUser: req.user, fluxes: relevantData, month: month, moment: moment, monthNum: monthNum});
   });
 });
 

@@ -7,8 +7,8 @@ var authorisations  = require('../helpers/authorisations');
 
 /* GET home page. */
 router.get('/', authorisations.isLoggedIn, function(req, res, next) {
-	res.render('index', { title: 'Express', currentUser : req.user });
-  
+	// res.render('index', { title: 'Express', currentUser : req.user });
+  res.redirect("/flux/balance");
 });
 
 module.exports = router;
