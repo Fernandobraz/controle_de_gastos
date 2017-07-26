@@ -1,0 +1,26 @@
+<% include ../layouts/header.ejs %>
+
+<h1>Necessities Types</h1>
+<a href="/necessitiesTypes/new">New Necessities Type</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% necessitiesTypes.forEach(function(necessitiesType){ %>
+      <tr>
+        <td><%= necessitiesType.name %></td>
+        <td><a href="/necessitiesTypes/edit/<%= necessitiesType._id %>">Edit</a></td>
+        <td><a href="/necessitiesTypes/delete/<%= necessitiesType._id %>" onclick="return confirm('Are you sure you want to delete the type <%= necessitiesType.name %>?');">Delete</a></td>
+      </tr>
+    <% }); %>
+    
+  </tbody>
+</table>
+
+<% include ../layouts/footer.ejs %>

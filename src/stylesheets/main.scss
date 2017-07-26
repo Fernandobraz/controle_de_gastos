@@ -12,15 +12,15 @@ ul, ol {
   margin-bottom: 0; 
 }
 
-h1{
+h1 {
   text-transform: capitalize;
 }
 
-table{
+table {
   width: 100%; 
   border-collapse: collapse; 
 }
-tbody{
+tbody {
   tr:nth-of-type(odd) { 
     background: #eee;
     // border-color: #000000;
@@ -121,19 +121,29 @@ td, th {
   padding: 0 0 0 5px;
 }
 
-.btn-approve, .btn-reject{
+.btn-approve, .btn-reject {
   width: 70px;
   color: #FFFFFF;
   border: 0;
 }
-.btn-approve{
+
+.btn-approve {
   background-color: #00BD23;
 }
-.btn-reject{
+
+.btn-reject {
   background-color: #951A1A;
 }
 
-.month-block{
+.positive-value {
+  color: #32DA4C;
+}
+
+.negative-value {
+  color: #951A1A;
+}
+
+.month-block {
   border: 1px solid #000000;
   padding: 20px 30px;
   height: 160px;
@@ -144,12 +154,12 @@ td, th {
   }
 }
 
-.month-link{
+.month-link {
   color: #000000;
 
-  &:hover{
+  &:hover {
     color: #000000;
-    .month-block{
+    .month-block {
       border: 3px solid #525252;
     }
   }
@@ -159,21 +169,28 @@ td, th {
   margin-bottom: 10px;
 }
 
+.groceries-list {
+  margin: 20px 0;
+  border: 1px solid;
+  padding: 30px;
+  width: 40%;
+}
+
 @media screen and (max-width: 854px) {
-  .container{
+  .container {
     font-size: 1.2em;
   }
-  .content{
+  .content {
     float: none;
     width: 100%;
   }
-  .nav-bar{
+  .nav-bar {
     float: none;
     width: 100%;
     padding: 10px;
-    ul{
+    ul {
       display: inline-flex;
-      li{
+      li {
         margin-bottom: 0;
         margin-right: 10px;
       }
@@ -195,7 +212,7 @@ td, th {
   tr { border: 1px solid #ccc; }
   
   tr:nth-of-type(odd) { 
-    td{
+    td {
       border-color: #ccc;
     }
   }
@@ -231,6 +248,16 @@ td, th {
   td:nth-of-type(7):before { content: "Edit"; }
   td:nth-of-type(8):before { content: "Delete"; }
 
+  .groceries-list {
+    margin: 20px 0;
+    border: 1px solid;
+    padding: 30px;
+    width: 99%;
+  }
+
+  .disposable {
+    display: none;
+  }
 }
 
 

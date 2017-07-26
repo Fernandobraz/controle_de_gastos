@@ -1,0 +1,17 @@
+<% include ../layouts/header.ejs %>
+<div class="col-sm-6">
+    <% if(typeof(message) !== "undefined" && message.length > 0){ %>
+    <div class="alert alert-danger"><%- message %></div>
+    <% } %>
+    <h1>New Necessities Type</h1>
+    <!-- LOGIN FORM -->
+    <form action="/necessitiesTypes/create" method="post">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg">Create</button>
+        <a href="/necessitiesTypes/">Cancel</a>
+    </form>
+</div>
+<% include ../layouts/footer.ejs %>

@@ -8,6 +8,6 @@ module.exports = {
     getDbConnectionString: function(){
     	console.log("Connecting to Databse...");
     	console.log("Database Connected!");
-        return 'mongodb://' + configValues.uname + ':' + configValues.pwd + '@ds017248.mlab.com:17248/gastos_mensais';
+        return 'mongodb://' + configValues.uname + ':' + configValues.pwd + '@ds119748.mlab.com:19748/gastosmensais';
     }
 }

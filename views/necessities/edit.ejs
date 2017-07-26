@@ -1,0 +1,29 @@
+<% include ../layouts/header.ejs %>
+<div class="col-sm-6">
+    <% if(typeof(message) !== "undefined" && message.length > 0){ %>
+    <div class="alert alert-danger"><%- message %></div>
+    <% } %>
+    <h1>Edit Necessity</h1>
+    <!-- LOGIN FORM -->
+    <form action="/necessities/update" method="post">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" value="<%= necessity.name %>">
+        </div>
+        <div class="form-group">
+            <label>Approx. Price</label>
+            <input type="text" class="form-control" name="approxPrice" value="<%= necessity.approxPrice %>">
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <select name="typeId" class="form-control">
+              <% necessitiesTypes.forEach(function(necessitiesType){ %>
+                <option value="<%= necessitiesType._id %>" <% if(necessitiesType._id === necessity.typeId){ %> selected <% } %>><%= necessitiesType.name %></option>
+              <% }) %> 
+            </select>
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg">Create</button>
+        <a href="/necessities/">Cancel</a>
+    </form>
+</div>
+<% include ../layouts/footer.ejs %>

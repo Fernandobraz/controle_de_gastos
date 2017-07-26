@@ -1,0 +1,29 @@
+<% include ../layouts/header.ejs %>
+
+<h1>Groceries List</h1>
+<a href="/necessities/manager">Groceries Manager</a>
+
+<form action="/necessities/listUpdate" method="post">
+  <div class="groceries-list">
+    <% if(necessities.length === 0){ %>
+      <h3>Empty List</h3>
+       <p>You can add itens to this list <a href="/necessities/manager">here</a></p>
+    <% }else{ %>
+      <% necessities.forEach(function(necessity){ %>
+        <div class="form-group">
+          <label><input type="checkbox" name="necessity" value="<%= necessity._id %>"> <%= necessity.name %></label>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+  <button type="submit" class="btn btn-warning btn-lg">Finsish Groceries</button>
+  <a href="/necessities/">Cancel</a>
+</form>
+
+<script type="text/javascript">
+$( ":checkbox" ).change(function(){
+  $(this.parentNode).css("text-decoration", "line-through");
+});
+</script>
+
+<% include ../layouts/footer.ejs %>

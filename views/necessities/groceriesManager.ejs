@@ -1,0 +1,19 @@
+<% include ../layouts/header.ejs %>
+
+<h1>Groceries Manager</h1>
+<a href="/necessities/list">Groceries List</a>
+
+<form action="/necessities/managerUpdate" method="post">
+  <div class="groceries-list">
+    <% necessities.forEach(function(necessity){ %>
+      <div class="form-group">
+        <label><input type="checkbox" name="necessity" value="<%= necessity._id %>"> <%= necessity.name %></label>
+      </div>
+    <% }) %>
+  </div>
+  <button type="submit" class="btn btn-warning btn-lg">Update List</button>
+  <a href="/necessities/">Cancel</a>
+</form>
+
+
+<% include ../layouts/footer.ejs %>

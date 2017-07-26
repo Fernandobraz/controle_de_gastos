@@ -2,9 +2,10 @@
 
 <h1>Balance</h1>
 
-<p>Total In: <strong>£<%= totalIn %></strong></p>
-<p>Total Out: <strong>£<%= totalOut %></strong></p>
-<p>Total: <strong>£<%= parseFloat(totalIn) - parseFloat(totalOut) %></strong></p>
+<p>Total In: <strong class="positive-value">£<%= totalIn %></strong></p>
+<p>Total Out: <strong class="negative-value">£<%= totalOut %></strong></p>
+<% var total = parseFloat(totalIn) - parseFloat(totalOut) %>
+<p>Total: <strong class=<%= ((total >= 0) ? "positive-value" : "negative-value") %>>£<%= total %></strong></p>
 
 <% for(var i = 0; i<3; i++){ %>
 <% var counter = 0; %>

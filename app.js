@@ -13,8 +13,12 @@ var http          = require('http').Server(app);
 var config = require('./config/index');
 var routes = require('./routes/index');
 var flux = require('./routes/flux');
+var necessities = require('./routes/necessities');
+var necessitiesTypes = require('./routes/necessitiesTypes');
 
-mongoose.connect(config.getDbConnectionString());
+mongoose.connect(config.getDbConnectionString(), {
+  useMongoClient: true
+});
 
 var app = express();
 
@@ -50,6 +54,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 var users = require('./routes/users')(app, passport);
 app.use('/', routes);
 app.use('/flux', flux);
+app.use('/necessities', necessities);
+app.use('/necessitiesTypes', necessitiesTypes);
 
 
 // catch 404 and forward to error handler

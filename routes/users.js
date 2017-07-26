@@ -82,10 +82,13 @@ module.exports = function(app, passport) {
 						newUser.lastName = lastName;
 						newUser.admin = admin;
 						newUser.password = newUser.generateHash(password);
+
+						console.log("test");
+
 					newUser.save(function(err){
 						if(err) throw err;
-						res.location("users");
 						console.log(res.req.body);
+						res.location("users");
 						res.redirect("/users");
 					});
 				}
@@ -93,7 +96,7 @@ module.exports = function(app, passport) {
     });
 		
 		
-		app.get('/users', authorisations.isLoggedIn, function(req, res) {
+		app.get('/users', authorisations.isLoggedIn, authorisations.isAdmin, function(req, res) {
 			var gotError = "";
 			if(typeof(req.query.error) !== "undefined"){
 				if(req.query.error === "001")
@@ -167,7 +170,7 @@ module.exports = function(app, passport) {
 				bcrypt.compare(oldPassword, user.password, function(err, result) {
 					if(!result){
 						var message = "The old password is not correct";
-    				res.render('users/password.ejs', { currentUser : req.user, message: message });
+    					res.render('users/password.ejs', { currentUser : req.user, message: message });
 					}else{
     				user.password = user.generateHash(newPassword);
 						user.save(function(err){
@@ -179,7 +182,7 @@ module.exports = function(app, passport) {
 						    });
 							}
 
-							res.redirect("/bookings/personal_requests");
+							res.redirect("/flux/balance/");
 						});
 					}
 				});
