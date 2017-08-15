@@ -29,5 +29,9 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
-# Bower components
-bower_components
+*.txt
+
+views/houses
+routes/houses.js
+models/house.js
+models/houseUser.js

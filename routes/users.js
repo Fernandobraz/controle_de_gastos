@@ -35,7 +35,7 @@ module.exports = function(app, passport) {
     // ==============SIGNUP ================
     // =====================================
     // show the signup form
-    app.get('/users/register', authorisations.isLoggedIn, function(req, res) {
+    app.get('/users/register', authorisations.isLoggedIn, authorisations.isSuperAdmin, function(req, res) {
 
         // render the page and pass in any flash data if it exists
         res.render('users/new.ejs', {currentUser : req.user, message: req.flash('signupMessage') });
@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
 		});
 		
     // process the signup form
-    app.post('/users/register', authorisations.isLoggedIn, function(req, res) {
+    app.post('/users/register', authorisations.isLoggedIn, authorisations.isSuperAdmin, function(req, res) {
       var email = req.body.email;
       var firstName = req.body.firstName;
       var lastName = req.body.lastName;
@@ -96,7 +96,7 @@ module.exports = function(app, passport) {
     });
 		
 		
-		app.get('/users', authorisations.isLoggedIn, authorisations.isAdmin, function(req, res) {
+		app.get('/users', authorisations.isLoggedIn, authorisations.isAdmin, authorisations.isSuperAdmin, function(req, res) {
 			var gotError = "";
 			if(typeof(req.query.error) !== "undefined"){
 				if(req.query.error === "001")

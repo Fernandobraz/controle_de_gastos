@@ -52,8 +52,6 @@ router.get('/edit/:id', authorisations.isLoggedIn, authorisations.isAdmin, funct
 router.post("/update", authorisations.isLoggedIn, authorisations.isAdmin, function(req,res){
   var name = req.body.name;
   var id = req.body.id;
-  // todo validation
-  console.log(name);
   NecessitiesType.findByIdAndUpdate(id, {
     name: name
   }, function(err, necessitiesType){

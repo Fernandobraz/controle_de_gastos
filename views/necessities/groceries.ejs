@@ -10,20 +10,53 @@
        <p>You can add itens to this list <a href="/necessities/manager">here</a></p>
     <% }else{ %>
       <% necessities.forEach(function(necessity){ %>
+        <input type="hidden" id="totalValueField" name="totalValue" value="">
         <div class="form-group">
-          <label><input type="checkbox" name="necessity" value="<%= necessity._id %>"> <%= necessity.name %></label>
+          <label><input type="checkbox" name="necessity" onchange="addPrice(<%= necessity.approxPrice %>, this)" value="<%= necessity._id %>"> <%= necessity.name %></label>
         </div>
       <% }) %>
     <% } %>
   </div>
-  <button type="submit" class="btn btn-warning btn-lg">Finsish Groceries</button>
+  <div class="groceries-value">£<input type="text" id="groceries-summed-value" value="0.00"></div> 
+  <button type="submit" id="grocerySubmit" disabled class="btn btn-warning btn-lg">Finsish Groceries</button>
   <a href="/necessities/">Cancel</a>
+  <label><input type="checkbox" onchange="priceConfirm(this.checked)">Confirm the price is correct.</label>
 </form>
 
 <script type="text/javascript">
-$( ":checkbox" ).change(function(){
-  $(this.parentNode).css("text-decoration", "line-through");
-});
+
+function addPrice(price, obj){
+  var summedValue = parseFloat($("#groceries-summed-value")[0].value);
+
+  if(obj.checked){
+    $(obj.parentNode).css("text-decoration", "line-through");
+    Math.abs(price);
+  }else{
+    $(obj.parentNode).css("text-decoration", "none");
+    price = price*(-1);
+  }
+
+
+  $("#groceries-summed-value")[0].value = (summedValue + price).toFixed(2);
+  if(parseFloat($("#groceries-summed-value")[0].value) < 0 || $("#groceries-summed-value")[0].value === ""){
+    $("#groceries-summed-value")[0].value = "0";
+  }
+  $("#totalValueField")[0].value = summedValue + price + "";
+
+}
+
+function copyToForm(obj){
+  $(obj).css("color", "red");
+}
+
+function priceConfirm(check){
+  if(check){
+    $("#grocerySubmit")[0].disabled = false;
+  }else{
+    $("#grocerySubmit")[0].disabled = true;
+  }
+}
+
 </script>
 
 <% include ../layouts/footer.ejs %>

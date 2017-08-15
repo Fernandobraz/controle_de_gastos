@@ -6,8 +6,13 @@ var configValues = require('./config');
 
 module.exports = {
     getDbConnectionString: function(){
-    	console.log("Connecting to Databse...");
-    	console.log("Database Connected!");
+    	console.log("Connecting to Online Databse...");
+    	console.log("Online Database Connected!");
         return 'mongodb://' + configValues.uname + ':' + configValues.pwd + '@ds119748.mlab.com:19748/gastosmensais';
+    },
+    getDbConnectionStringOffline: function(){
+      console.log("Connecting to Offline Databse...");
+      console.log("Offline Database Connected!");
+        return 'localhost:27017/gastosmensais';
     }
 }

@@ -12,6 +12,10 @@
             <input type="date" class="form-control" name="date" value="<%= flux.date %>">
         </div>
         <div class="form-group">
+            <label>Time</label>
+            <input type="date" class="form-control" name="time" value="<%= flux.time %>">
+        </div>
+        <div class="form-group">
             <label>Value</label>
             <input type="text" class="form-control" name="value" value="<%= flux.value %>">
         </div>
@@ -29,7 +33,7 @@
         <div class="form-group">
             <label>Period Type </label>
             <select name="type" class="form-control">
-                <option value="daily" <% if(flux.type === "daily"){ %> selected <% } %>>Daily</option>
+                <option value="once" <% if(flux.type === "once"){ %> selected <% } %>>Just this once</option>
                 <option value="monthly"<% if(flux.type === "monthly"){ %> selected <% } %>>Monthly</option>
                 <option value="annually"<% if(flux.type === "annually"){ %> selected <% } %>>Annually</option>
             </select>

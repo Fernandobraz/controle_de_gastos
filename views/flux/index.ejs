@@ -17,7 +17,8 @@
 		<tr>
       <th>Description</th>
       <th>Value</th>
-			<th>Date</th>
+      <th>Date</th>
+			<th>Time</th>
       <th>In/Out</th>
 			<th>Period Type</th>
       <th>Created at</th>
@@ -31,11 +32,12 @@
         <td><%= flux.description %></td>
         <td><%= flux.value %></td>
         <td><%= moment(flux.date).format("DD/MM/YYYY") %></td>
+        <td><%= flux.time %></td>
         <td><%= flux.inOut %></td>
         <td><%= flux.type %></td>
         <td><%= moment(flux.createdAt).format("DD/MM/YYYY") %></td>
         <td><a href="/flux/edit/<%= flux._id %>">Edit</a></td>
-        <td><a href="/flux/delete/<%= flux._id %>" onclick="return confirm('Are you sure you want to referesh the year?');">Delete</a></td>
+        <td><a href="/flux/delete/<%= flux._id %>" onclick="return confirm('Are you sure you want to delete this flux?');">Delete</a></td>
       </tr>
     <% }); %>
 		

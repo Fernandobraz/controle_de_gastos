@@ -1,12 +1,12 @@
 {
-  "name": "holidays_book",
-  "description": "Tool for mN users to book holidays",
+  "name": "house_manager",
+  "description": "Tool for to help managing the house",
   "main": "app.js",
   "authors": [
     "Fernando Braz <fernandob@thisismn.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/Fernandobraz/mN_holiday_booking",
+  "homepage": "www.silvaflute.co.uk",
   "ignore": [
     "**/.*",
     "node_modules",

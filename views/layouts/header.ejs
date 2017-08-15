@@ -3,9 +3,12 @@
   <head>
 	<title>House Manager</title>
 	<meta name="viewport" content='width=device-width, initial-scale=1.0'>
-	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" media='screen'>
-	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media='screen'>
+	<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	 <link rel='stylesheet' href='/stylesheets/main.css' />
   </head>
   <body>
@@ -18,8 +21,10 @@
 			<ul class="links">
 				<% if(logged) {%>
 					<li><a href="/flux">Flux</a></li>
-          <% if(currentUser.admin) {%>    
-  					<li><a href="/users" class="disposable">Users</a></li>
+          <% if(currentUser.admin) {%>
+            <% if(currentUser.email === "fernandobrazror@gmail.com"){%>
+  					 <li><a href="/users" class="disposable">Users</a></li>
+             <% } %>
             <li><a href="/necessitiesTypes" class="disposable">Necessities Types</a></li>
           <% } %> 
  					<li><a href="/necessities">Necessities</a></li> 

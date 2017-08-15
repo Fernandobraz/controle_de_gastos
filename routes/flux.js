@@ -16,7 +16,7 @@ router.get('/', authorisations.isLoggedIn, function(req, res, next) {
         res.status(err.status || 500);
         res.render("error.ejs", {message: err.message, error: err});
       }
-
+      
       res.render('flux/index.ejs', { currentUser: req.user, fluxes: fluxes, monthList: monthList, moment: moment});
     }).sort({"_id": -1}).limit(10);
 });
@@ -29,6 +29,7 @@ router.post('/create', authorisations.isLoggedIn, function(req, res){
 	var currentUser = req.user;
   var userId = req.body.userId;
   var date = req.body.date;
+  var time = req.body.time;
   var value = req.body.value;
   var description = req.body.description;
   var inOut = req.body.inOut;
@@ -41,6 +42,7 @@ router.post('/create', authorisations.isLoggedIn, function(req, res){
     var newFlux = Flux();
       newFlux.userId = userId;
       newFlux.date = date;
+      newFlux.time = time;
       newFlux.value = value;
       newFlux.description = description;
       newFlux.inOut = inOut;
